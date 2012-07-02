@@ -48,9 +48,7 @@
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Maximum Attachment Reached", nil) message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
 		[alert show];
-		[alert release];	
-
-        [(ELCAssetTablePicker*)self.parent doneAction:nil];
+		[alert release];
     } else{
         overlayView.hidden = !overlayView.hidden;
     }
