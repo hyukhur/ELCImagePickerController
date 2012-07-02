@@ -44,17 +44,16 @@
 }
 
 -(void)toggleSelection {
-    
-	overlayView.hidden = !overlayView.hidden;
-    
-//    if([(ELCAssetTablePicker*)self.parent totalSelectedAssets] >= 10) {
-//        
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Maximum Reached" message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
-//		[alert show];
-//		[alert release];	
-//
-//        [(ELCAssetTablePicker*)self.parent doneAction:nil];
-//    }
+    if([(ELCAssetTablePicker*)self.parent totalSelectedAssets] >= 10) {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Maximum Attachment Reached", nil) message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+		[alert show];
+		[alert release];	
+
+        [(ELCAssetTablePicker*)self.parent doneAction:nil];
+    } else{
+        overlayView.hidden = !overlayView.hidden;
+    }
 }
 
 -(BOOL)selected {
