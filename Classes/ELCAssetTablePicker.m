@@ -42,7 +42,7 @@
 
 	
     NSLog(@"enumerating photos");
-    [self.assetGroup enumerateAssetsWithOptions:(NSEnumerationReverse) usingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop)
+    [self.assetGroup enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) 
      {         
          if(result == nil) 
          {
