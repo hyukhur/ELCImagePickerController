@@ -17,8 +17,14 @@
 @synthesize selectedAssetsLabel;
 @synthesize assetGroup, elcAssets;
 
+-(void)reloadTable {
+    [self.tableView reloadData];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    [self.navigationItem setTitle:NSLocalizedString(@"Pick Photos", nil)];
+}
+
 -(void)viewDidLoad {
-        
+    
 	[self.tableView setSeparatorColor:[UIColor clearColor]];
 	[self.tableView setAllowsSelection:NO];
 
@@ -33,14 +39,14 @@
 	[self performSelectorInBackground:@selector(preparePhotos) withObject:nil];
     
     // Show partial while full list loads
-	[self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:.5];
+	[self performSelector:@selector(reloadTable) withObject:nil afterDelay:.5];
 }
 
 -(void)preparePhotos {
     
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
-	
+    
     NSLog(@"enumerating photos");
     [self.assetGroup enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) 
      {         
@@ -55,8 +61,7 @@
      }];    
     NSLog(@"done enumerating photos");
 	
-	[self.tableView reloadData];
-	[self.navigationItem setTitle:NSLocalizedString(@"Pick Photos", nil)];
+    [self performSelectorOnMainThread:@selector(reloadTable) withObject:nil waitUntilDone:NO];
     
     [pool release];
 
