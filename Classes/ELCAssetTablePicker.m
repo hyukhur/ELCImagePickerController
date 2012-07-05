@@ -19,7 +19,7 @@
 
 -(void)reloadTable {
     [self.tableView reloadData];
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:MAX(0, [self.tableView numberOfRowsInSection:0] - 1) inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
     [self.navigationItem setTitle:NSLocalizedString(@"Pick Photos", nil)];
 }
 
