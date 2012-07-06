@@ -61,7 +61,7 @@
         };	
                 
         // Enumerate Albums
-        [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos
+        [library enumerateGroupsWithTypes:ALAssetsGroupAll
                                usingBlock:assetGroupEnumerator 
                              failureBlock:assetGroupEnumberatorFailure];
         
