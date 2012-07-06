@@ -44,7 +44,7 @@
 }
 
 -(void)toggleSelection {
-    if([(ELCAssetTablePicker*)self.parent totalSelectedAssets] >= 10) {
+    if(overlayView.hidden && [(ELCAssetTablePicker*)self.parent totalSelectedAssets] >= 10) {
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Maximum Attachment Reached", nil) message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
 		[alert show];
