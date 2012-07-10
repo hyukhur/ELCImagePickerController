@@ -44,7 +44,7 @@
                 return;
             }
             
-            [self.assetGroups addObject:group];
+            [self.assetGroups insertObject:group atIndex:0];
 
             // Reload albums
             [self performSelectorOnMainThread:@selector(reloadTableView) withObject:nil waitUntilDone:YES];
